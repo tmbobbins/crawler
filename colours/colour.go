@@ -14,38 +14,38 @@ const (
 	White  = "\033[97m"
 )
 
-func WrapRed(body any) string {
+func WrapRed(body interface{}) string {
 	return Wrap(Red, body)
 }
 
-func WrapYellow(body any) string {
+func WrapYellow(body interface{}) string {
 	return Wrap(Yellow, body)
 }
 
-func WrapPurple(body any) string {
+func WrapPurple(body interface{}) string {
 	return Wrap(Purple, body)
 }
 
-func WrapCyan(body any) string {
+func WrapCyan(body interface{}) string {
 	return Wrap(Cyan, body)
 }
 
-func Wrap(colour string, body any) string {
+func Wrap(colour string, body interface{}) string {
 	return fmt.Sprintf("%s%s%s", colour, body, Reset)
 }
 
-func PrintRed(body any) {
+func PrintRed(body interface{}) {
 	fmt.Println(WrapRed(body))
 }
 
-func PrintYellow(body any) {
+func PrintYellow(body interface{}) {
 	fmt.Println(WrapYellow(body))
 }
 
-func PrintCyan(body any) {
+func PrintCyan(body interface{}) {
 	fmt.Println(WrapCyan(body))
 }
 
-func PrintPurple(body any) {
+func PrintPurple(body interface{}) {
 	fmt.Println(WrapPurple(body))
 }
