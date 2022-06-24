@@ -1,4 +1,4 @@
-name: fmt
+name: lint
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   fmt:
-    name: fmt
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
