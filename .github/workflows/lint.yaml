@@ -1,0 +1,22 @@
+name: fmt
+on:
+  push:
+    branches:
+      - '**'
+permissions:
+  contents: read
+jobs:
+  fmt:
+    name: fmt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+      - uses: actions/checkout@v2
+      - name: Install lint dependencies
+        run: |
+          go get -u golang.org/x/lint/golint
+      - name: Vet & Lint
+        run: |
+          go vet .
+          golint .
