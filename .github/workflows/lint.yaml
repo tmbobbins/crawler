@@ -14,8 +14,7 @@ jobs:
         uses: actions/setup-go@v2
       - uses: actions/checkout@v2
       - name: Install lint dependencies
-        run: |
-          go get -u golang.org/x/lint/golint
+        run: apt-get install golint
       - name: Vet & Lint
         run: |
           go vet .
