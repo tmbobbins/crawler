@@ -1,0 +1,17 @@
+name: fmt
+on:
+  push:
+    branches:
+      - '**'
+permissions:
+  contents: read
+jobs:
+  fmt:
+    name: fmt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+      - uses: actions/checkout@v2
+      - name: Format
+        run: if [ "$(gofmt -s -l ./dd | wc -l)" -gt 0 ]; then exit 1; fi
