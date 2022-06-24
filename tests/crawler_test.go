@@ -2,6 +2,7 @@ package tests
 
 import (
 	"crawler/crawl"
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
@@ -43,13 +44,14 @@ func TestCrawlOutput(t *testing.T) {
 		log.Fatal(err)
 	}
 
+	baseUrl := RelativeFile("crawler_test_data")
+	secondUrl := RelativeFile("crawler_test_data/link_test.html")
+	thirdUrl := RelativeFile("crawler_test_data/test.html")
+	fourthUrl := RelativeFile("crawler_test_data/blink_test.html")
+	sitemap := fmt.Sprintf("-> %s\n--> %s\n---> %s\n---> %s\n", baseUrl, secondUrl, thirdUrl, fourthUrl)
 	output := crawl.Output(links, 0)
 	assert.Equal(t,
-		`-> file:///var/www/crawler/tests/crawler_test_data
---> file:///var/www/crawler/tests/crawler_test_data/link_test.html
----> file:///var/www/crawler/tests/crawler_test_data/test.html
----> file:///var/www/crawler/tests/crawler_test_data/blink_test.html
-`,
+		sitemap,
 		output,
 	)
 }
